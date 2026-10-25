@@ -1,9 +1,10 @@
 // All page copy lives here so text edits never touch layout code.
 
 export const CONTACT = {
-  email: 'mailto:hello@example.com',
-  linkedin: '#',
-  github: '#',
+  email: 'mailto:saad@alrefaai.com',
+  x: 'https://x.com/ListenToSaad',
+  linkedin: 'https://www.linkedin.com/in/alrefaai/',
+  github: 'https://github.com/listentosaad',
 };
 
 export interface Product {
@@ -145,5 +146,5 @@ export const roles: Role[] = [
 /** Header links and the scene indexes during which each one is highlighted. */
 export const navLinks = [
   { label: 'المنتجات', href: '#products', scenes: [1, 2, 3] },
-  { label: 'الجهات', href: '#orgs', scenes: [4] },
+  { label: 'مسيرتي', href: '#orgs', scenes: [4] },
 ];

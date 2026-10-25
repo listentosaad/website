@@ -136,8 +136,8 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 .btn-lg { padding: 16px 30px; }
 .btn-xl { padding: 18px 34px; font-size: 18px; }
 
-.link-row { display: flex; align-items: center; gap: 8px clamp(20px, 3vw, 28px); flex-wrap: wrap; font-size: 17px; }
-.link-row a:not(.btn) { display: inline-flex; align-items: center; min-height: 44px; }
+.link-row { display: flex; align-items: center; gap: 8px clamp(14px, 3vw, 28px); flex-wrap: wrap; font-size: 17px; }
+.link-row a:not(.btn) { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; }
 .muted { color: var(--muted); }
 
 /* ---------- Type ---------- */
