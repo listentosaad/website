@@ -23,8 +23,9 @@ function Title({ product, className }: { product: Product; className: string }) 
 function SocialLinks() {
   return (
     <>
-      <a href={CONTACT.linkedin}>LinkedIn</a>
-      <a href={CONTACT.github}>GitHub</a>
+      <a href={CONTACT.linkedin} rel="me">LinkedIn</a>
+      <a href={CONTACT.x} rel="me">X</a>
+      <a href={CONTACT.github} rel="me">GitHub</a>
     </>
   );
 }
@@ -34,7 +35,7 @@ export function Hero() {
     <section data-scene="0" className="section hero">
       <div data-reveal="1" className="container hero-inner">
         <h1 className="hero-title">سعد الرفاعي</h1>
-        <p className="hero-lead">مدير منتجات وشريك مؤسس في نقوة. أحوّل الأفكار العشوائية إلى منتجات تحقق الإيرادات، مع الشركاء والفرق المتعددة.</p>
+        <p className="hero-lead">مدير منتجات وشريك مؤسس في نقوة. أحوّل الأفكار إلى منتجات تحقق إيرادات.</p>
         <div className="link-row">
           <a href={CONTACT.email} className="btn btn-lg">راسلني</a>
           <SocialLinks />
@@ -51,7 +52,7 @@ export function PartnerProducts() {
       <div data-reveal="1" className="container partners">
         <div className="partners-intro">
           <h2 className="h2">منتجات مع شركاء</h2>
-          <p className="body">أسست نقوة لتمكين المستثمرين لتحقيق التوافق الشرعي لاستثماراتهم بمنتجات متعددة، أعمل كمؤسس مشارك ومدير المنتجات</p>
+          <p className="body">شاركت في تأسيس نقوة وأدير منتجاتها. نساعد المستثمرين على استثمار متوافق مع الشريعة.</p>
           <p className="body-sm muted">بتحليل سلوك المستخدمين، رفعنا مبالغ التطهير لتصل إلى مليون ريال خلال 9 أسابيع<br /></p>
         </div>
         <div className="stack">
@@ -75,7 +76,7 @@ export function TeamProducts() {
         <div className="team-head">
           <div className="team-intro">
             <h2 className="h2">منتجات مع فريقي</h2>
-            <p className="body">في مجمع وادي جدة للابتكار، أدير المنتجات الرقمية والفريق التقني، ونبني منتجات مخصصة لرواد الأعمال والقطاع.</p>
+            <p className="body">أدير المنتجات الرقمية والفريق التقني في مجمع وادي جدة للابتكار. نبني لرواد الأعمال والقطاع.</p>
           </div>
           <div className="stats">
             {teamStats.map(s => (
@@ -106,7 +107,7 @@ export function SoloProducts() {
   return (
     <section data-scene="3" className="section">
       <div data-reveal="1" className="container column">
-        <h2 className="h2">منتجات بنيتها منفردًا</h2>
+        <h2 className="h2">منتجات بنيتها وحدي</h2>
         <div className="solo-grid">
           <a href={featuredSolo.href} className="feature">
             <span className="feature-status">{featuredSolo.status}</span>
@@ -132,7 +133,7 @@ export function Organisations() {
   return (
     <section id="orgs" data-scene="4" className="section">
       <div data-reveal="1" className="container orgs">
-        <h2 className="h2">جهات عملت فيها</h2>
+        <h2 className="h2">مسيرتي</h2>
         <div className="roles">
           {roles.map(r => (
             <div key={`${r.title}-${r.org}`} className="role">
@@ -152,8 +153,8 @@ export function Contact() {
   return (
     <section id="contact" data-scene="5" className="section contact">
       <div data-reveal="1" className="container column contact-inner">
-        <h2 className="h2 balance">لديك فكرة تنتظر الإطلاق؟</h2>
-        <p className="contact-lead">يسعدني الحديث عن المنتجات والذكاء الاصطناعي وبناء الأشياء التي تعمل.</p>
+        <h2 className="h2 balance">لديك فكرة؟ لنطلقها.</h2>
+        <p className="contact-lead">يسعدني الحديث عن المنتجات والذكاء الاصطناعي وبناء ما يعمل.</p>
         <div className="link-row">
           <a href={CONTACT.email} className="btn btn-xl">راسلني</a>
           <SocialLinks />

@@ -1,9 +1,10 @@
 // All page copy lives here so text edits never touch layout code.
 
 export const CONTACT = {
-  email: 'mailto:hello@example.com',
-  linkedin: '#',
-  github: '#',
+  email: 'mailto:saad@alrefaai.com',
+  x: 'https://x.com/ListenToSaad',
+  linkedin: 'https://www.linkedin.com/in/alrefaai/',
+  github: 'https://github.com/listentosaad',
 };
 
 export interface Product {
@@ -82,7 +83,7 @@ export const teamStats = [
 export const featuredSolo = {
   status: 'موقع · founder-path.com',
   title: 'مسار المؤسس',
-  description: 'خطة تعلّم منهجية لبناء شركتك الناشئة من محتوى Y Combinator، بلا تسجيل دخول، ويُحفظ تقدمك تلقائيًا في المتصفح.',
+  description: 'خطة تعلّم منهجية لبناء شركتك الناشئة من محتوى Y\u00A0Combinator، بلا تسجيل دخول، ويُحفظ تقدمك تلقائيًا في المتصفح.',
   href: 'https://founder-path.com',
 };
 
@@ -140,16 +141,10 @@ export const roles: Role[] = [
     title: 'متدرب نمو المنتج',
     org: 'تطبيق نديم',
   },
-  {
-    period: 'فبراير – يوليو 2025',
-    title: 'عضو مؤسس',
-    org: 'نخلة · موسمي',
-    description: 'تصميم الهوية، وإدارة العمليات اليومية، وتأسيس الحضور في وسائل التواصل، ثم تفرغت لتنمية نقوة.',
-  },
 ];
 
 /** Header links and the scene indexes during which each one is highlighted. */
 export const navLinks = [
   { label: 'المنتجات', href: '#products', scenes: [1, 2, 3] },
-  { label: 'الجهات', href: '#orgs', scenes: [4] },
+  { label: 'مسيرتي', href: '#orgs', scenes: [4] },
 ];
