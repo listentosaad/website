@@ -147,4 +147,5 @@ export const roles: Role[] = [
 export const navLinks = [
   { label: 'المنتجات', href: '#products', scenes: [1, 2, 3] },
   { label: 'مسيرتي', href: '#orgs', scenes: [4] },
+  { label: 'المدونة', href: 'https://blog.alrefaai.com/', scenes: [] },
 ];

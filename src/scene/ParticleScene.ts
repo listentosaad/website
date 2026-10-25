@@ -148,7 +148,7 @@ export class ParticleScene {
     this.ctx = c.getContext('2d');
     if (!this.ctx) return;
     this.ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
-    this.ctx.fillStyle = '#0B0B0C';
+    this.ctx.fillStyle = '#050506';
     this.ctx.fillRect(0, 0, this.w, this.h);
   }
 
@@ -189,7 +189,7 @@ export class ParticleScene {
     const w = this.w, h = this.h, t = this.t, S = FORMS.length;
     ctx.globalCompositeOperation = 'source-over';
     ctx.globalAlpha = 1;
-    ctx.fillStyle = this.opts.trails ? 'rgba(11,11,12,0.35)' : '#0B0B0C';
+    ctx.fillStyle = this.opts.trails ? 'rgba(5,5,6,0.35)' : '#050506';
     ctx.fillRect(0, 0, w, h);
 
     // Blend from the current section's form to the next one.
