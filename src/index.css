@@ -1,9 +1,9 @@
-/* Salma: Arabic display face for h1–h3. Drop the file at public/fonts/Salma.woff2.
-   unicode-range keeps Latin characters in IBM Plex Sans Arabic. */
+/* Salma (itf Salma Arabic Bold): Arabic display face for h1–h3.
+   It has no Latin glyphs; unicode-range keeps Latin in IBM Plex Sans Arabic. */
 @font-face {
   font-family: 'Salma';
   src: url('/fonts/Salma.woff2') format('woff2');
-  font-weight: 100 900;
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
   unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200F;
@@ -37,7 +37,8 @@ html, body {
 body { font-family: 'IBM Plex Sans Arabic', sans-serif; overflow-x: hidden; }
 a { color: var(--fg); text-decoration: none; transition: color .2s; }
 a:hover { color: var(--accent); }
-h1:lang(ar), h2:lang(ar), h3:lang(ar) { font-family: 'Salma', 'IBM Plex Sans Arabic', sans-serif; }
+/* Salma's descenders run deeper than Plex's, so its headings need more line height. */
+h1:lang(ar), h2:lang(ar), h3:lang(ar) { font-family: 'Salma', 'IBM Plex Sans Arabic', sans-serif; line-height: 1.25; padding-bottom: .12em; }
 a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 ::selection { background: var(--accent); color: var(--bg); }
 
