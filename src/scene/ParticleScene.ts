@@ -22,6 +22,9 @@ const FORMS = [0, 2, 3, 6, 4, 0];
 const OFFSETS = [-0.16, -0.2, 0.2, 0.2, -0.2, 0.18];
 const COUNTS: Record<Density, number> = { low: 1600, medium: 3000, high: 5000 };
 const SPEEDS: Record<Motion, number> = { calm: 0.5, normal: 1, intense: 1.8 };
+// Below this width the shape sits centred behind the text, so it is drawn dimmer.
+const NARROW = 760;
+const NARROW_ALPHA = 0.4;
 
 /**
  * Scroll-driven particle background. Reads `[data-scene]` sections to know
@@ -52,6 +55,7 @@ export class ParticleScene {
   private audio: Audio | null = null;
   private timers: number[] = [];
   private disposed = false;
+  private sizer: ResizeObserver | null = null;
 
   constructor(canvas: HTMLCanvasElement, opts: SceneOptions) {
     this.canvas = canvas;
@@ -60,7 +64,14 @@ export class ParticleScene {
     this.lastY = window.scrollY;
     this.seed();
 
-    addEventListener('resize', this.onResize);
+    // Watch the canvas box rather than the window: on mobile the window
+    // height changes with the address bar, the canvas (100lvh) does not.
+    if (window.ResizeObserver) {
+      this.sizer = new ResizeObserver(this.onResize);
+      this.sizer.observe(canvas);
+    } else {
+      addEventListener('resize', this.onResize);
+    }
     addEventListener('mousemove', this.onMove);
     addEventListener('scroll', this.onScroll, { passive: true });
     this.resize();
@@ -117,6 +128,7 @@ export class ParticleScene {
     this.disposed = true;
     cancelAnimationFrame(this.raf);
     this.timers.forEach(clearTimeout);
+    this.sizer?.disconnect();
     removeEventListener('resize', this.onResize);
     removeEventListener('mousemove', this.onMove);
     removeEventListener('scroll', this.onScroll);
@@ -143,7 +155,7 @@ export class ParticleScene {
   private resize() {
     const c = this.canvas;
     this.dpr = Math.min(2, devicePixelRatio || 1);
-    this.w = innerWidth; this.h = innerHeight;
+    this.w = c.clientWidth || innerWidth; this.h = c.clientHeight || innerHeight;
     c.width = this.w * this.dpr; c.height = this.h * this.dpr;
     this.ctx = c.getContext('2d');
     if (!this.ctx) return;
@@ -175,13 +187,15 @@ export class ParticleScene {
 
   private frame(dt: number) {
     const cv = this.canvas;
-    if (!this.ctx || cv.width === 0 || this.w !== innerWidth || this.h !== innerHeight) this.resize();
+    if (!this.ctx || cv.width === 0) this.resize();
     const ctx = this.ctx;
     if (!ctx) return;
 
     const mot = (SPEEDS[this.opts.motion] ?? 1) * (this.reduced ? 0.3 : 1);
     this.vel *= 0.92;
-    this.t += dt * mot * (1 + Math.min(this.vel * 6, 4));
+    // Scrolling speeds the animation up a little, capped so a fast fling
+    // does not send the particles racing.
+    this.t += dt * mot * (1 + Math.min(this.vel * 3, 1));
     this.sceneF += (this.target - this.sceneF) * Math.min(1, dt * 3.5);
     this.mx += (this.tmx - this.mx) * dt * 2;
     this.my += (this.tmy - this.my) * dt * 2;
@@ -197,7 +211,8 @@ export class ParticleScene {
     const e0 = Math.max(0, Math.min(1, (fr - 0.15) / 0.7)), m = e0 * e0 * (3 - 2 * e0);
     const k2 = Math.min(S - 1, k + 1);
     const fa = FORMS[k], fb = FORMS[k2];
-    const mobile = w < 760;
+    const mobile = w < NARROW;
+    const dim = mobile ? NARROW_ALPHA : 1;
     const off = mobile ? 0 : OFFSETS[k] * (1 - m) + OFFSETS[k2] * m;
     const cx = w * (0.5 + off), cy = h * 0.5;
     const fov = Math.min(w, h) * 0.95, camZ = 3;
@@ -218,7 +233,7 @@ export class ParticleScene {
       const pr = fov / dz, px = cx + x1 * pr, py = cy - y2 * pr;
       if (px < -10 || px > w + 10 || py < -10 || py > h + 10) continue;
       const near = 3 / dz, s = Math.max(0.6, Math.min(3.2, near * 1.1));
-      ctx.globalAlpha = Math.max(0.05, Math.min(0.36, near * 0.19));
+      ctx.globalAlpha = Math.max(0.05, Math.min(0.36, near * 0.19)) * dim;
       ctx.fillStyle = i % 17 === 0 ? '#EE8463' : '#F2F0EC';
       ctx.fillRect(px, py, s, s);
     }

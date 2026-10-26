@@ -49,20 +49,28 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
   background: var(--bg);
   color: var(--fg);
   font-family: 'IBM Plex Sans Arabic', sans-serif;
-  min-height: 100dvh;
+  min-height: 100vh;
+  min-height: 100svh;
 }
-.scene-canvas { position: fixed; inset: 0; width: 100vw; height: 100vh; display: block; z-index: 0; }
-.main { position: relative; z-index: 2; }
+/* Sized to the largest viewport so the mobile address bar showing or hiding
+   never resizes it (a resize clears the canvas and re-centres the shape). */
+.scene-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; height: 100lvh; display: block; z-index: 0; }
+/* A dark halo keeps text readable where particles pass behind it. */
+.main { position: relative; z-index: 2; text-shadow: 0 0 2px var(--bg), 0 0 6px var(--bg), 0 0 16px var(--bg), 0 0 32px var(--bg); }
+.main :is(.card, .row, .feature, .btn) { text-shadow: none; }
 
 .section {
-  min-height: 100dvh;
+  /* svh, not dvh: dvh changes as the mobile address bar slides, which
+     resizes every section mid-scroll and makes the content jump. */
+  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   align-items: center;
   padding: 10vh var(--gutter);
   box-sizing: border-box;
 }
 @media (min-width: 768px) { .section { padding-block: 16vh; } }
-.section-tall { min-height: 120dvh; }
+.section-tall { min-height: 120vh; min-height: 120svh; }
 .container { width: 100%; max-width: var(--max); margin: 0 auto; }
 .column { display: flex; flex-direction: column; gap: clamp(32px, 5vw, 48px); }
 
