@@ -54,9 +54,10 @@ export const teamProducts: Product[] = [
     href: 'https://leadership.wjihub.com',
   },
   {
-    status: 'قريبًا',
+    status: 'متاح الآن · jobs.wjihub.com',
     title: 'منصة التوظيف «وجيه»',
     description: 'تربط الشركات الناشئة بالباحثين عن فرص تدريب وتوظيف تعزز مساراتهم المهنية.',
+    href: 'https://jobs.wjihub.com',
   },
   {
     status: 'نسخة تجريبية داخلية',
@@ -69,9 +70,10 @@ export const teamProducts: Product[] = [
     description: 'متابعة الشركات في حاضنة وادي جدة والربط مع المستشارين مع غرفة بيانات مخصصة لكل شركة',
   },
   {
-    status: 'منتج داخلي',
+    status: 'متاح الآن · booking.wjihub.com',
     title: 'منصة حجز القاعات',
     description: 'منصة لحجز قاعات الاجتماعات للموظفين والشركات والزوار.',
+    href: 'https://booking.wjihub.com/',
   },
 ];
 
