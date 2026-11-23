@@ -149,3 +149,34 @@ export const navLinks = [
   { label: 'مسيرتي', href: '#orgs', scenes: [4] },
   { label: 'المدونة', href: 'https://blog.alrefaai.com/', scenes: [] },
 ];
+
+// ---------- Footer ----------
+
+export interface FooterLink {
+  label: string;
+  href: string;
+  /** Latin labels render left-to-right inside the RTL column. */
+  ltr?: boolean;
+}
+
+export const footerTagline = 'مدير منتجات وشريك مؤسس في نقوة. أحوّل الأفكار إلى منتجات تحقق إيرادات.';
+
+export const footerNote = '© 2026، كل الحقوق محفوظة عند اللي يحفظون الحقوق';
+
+/** The product column lists every product that has a live link, so new launches appear on their own. */
+const everyProduct: Product[] = [...partnerProducts, ...teamProducts, featuredSolo];
+const liveProducts: FooterLink[] = everyProduct
+  .filter(isLive)
+  .map(p => ({ label: p.title, href: p.href!, ltr: p.ltr }));
+
+export const footerColumns: { title: string; links: FooterLink[] }[] = [
+  { title: 'منتجات', links: liveProducts },
+  { title: 'الموقع', links: [...navLinks.map(({ label, href }) => ({ label, href })), { label: 'تواصل', href: '#contact' }] },
+  {
+    title: 'أعمل مع',
+    links: [
+      { label: 'نقوة', href: 'https://trynaqua.com' },
+      { label: 'مجمع وادي جدة للابتكار', href: 'https://wjihub.com' },
+    ],
+  },
+];

@@ -160,10 +160,6 @@ export function Contact() {
           <SocialLinks />
         </div>
       </div>
-      <div className="container footer">
-        <span className="footer-name">سعد الرفاعي</span>
-        <span className="footer-note">© 2026، كل الحقوق محفوظة عند اللي يحفظون الحقوق&nbsp;</span>
-      </div>
     </section>
   );
 }
