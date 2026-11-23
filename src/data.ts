@@ -60,6 +60,12 @@ export const teamProducts: Product[] = [
     href: 'https://jobs.wjihub.com',
   },
   {
+    status: 'متاح الآن · booking.wjihub.com',
+    title: 'منصة حجز القاعات',
+    description: 'منصة لحجز قاعات الاجتماعات للموظفين والشركات والزوار.',
+    href: 'https://booking.wjihub.com/',
+  },
+  {
     status: 'نسخة تجريبية داخلية',
     title: 'وكيل واتساب «وجيه»',
     description: 'دعم فني للمستفيدين مدعوم بالذكاء الاصطناعي',
@@ -68,12 +74,6 @@ export const teamProducts: Product[] = [
     status: 'منتج داخلي',
     title: 'منتج الحاضنة',
     description: 'متابعة الشركات في حاضنة وادي جدة والربط مع المستشارين مع غرفة بيانات مخصصة لكل شركة',
-  },
-  {
-    status: 'متاح الآن · booking.wjihub.com',
-    title: 'منصة حجز القاعات',
-    description: 'منصة لحجز قاعات الاجتماعات للموظفين والشركات والزوار.',
-    href: 'https://booking.wjihub.com/',
   },
 ];
 
