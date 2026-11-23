@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { Contact, Hero, Organisations, PartnerProducts, SoloProducts, TeamProducts } from './components/Sections';
 import { useReveal } from './hooks/useReveal';
@@ -56,6 +57,7 @@ export default function App({ density = 'medium', motion = 'normal', trails = tr
         <Organisations />
         <Contact />
       </main>
+      <Footer />
     </div>
   );
 }

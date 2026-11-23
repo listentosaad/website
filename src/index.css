@@ -252,18 +252,77 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 .role-org { font-size: 16px; color: var(--soft-2); }
 .role-desc { font-size: 15px; line-height: 1.7; color: var(--soft); margin-top: 4px; }
 
-/* ---------- Contact & footer ---------- */
+/* ---------- Contact ---------- */
 
 .contact {
   flex-direction: column; justify-content: flex-end; align-items: stretch;
-  gap: 12vh; padding: 14vh var(--gutter) 40px;
+  padding: 14vh var(--gutter) 4vh;
 }
 @media (min-width: 768px) { .contact { padding-top: 20vh; } }
 .contact-inner { gap: 32px; }
 .contact-lead { margin: 0; max-width: 560px; font-size: clamp(18px, 1vw + 14px, 20px); line-height: 1.7; text-wrap: pretty; }
-.footer { display: flex; flex-direction: column; gap: 12px; }
-.footer-name {
-  font-size: clamp(40px, 13vw, 220px); font-weight: 700; line-height: .95; color: var(--ghost);
-  white-space: nowrap; padding-bottom: .2em;
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  position: relative; z-index: 2;
+  /* A short fade lets the particle sky above melt into the footer. */
+  background: linear-gradient(to bottom, rgba(5, 5, 6, 0), var(--bg) 160px);
+  /* clip, not hidden: hidden makes this a scroll container, which would stop
+     the scroll-driven animations inside from following the page scroll. */
+  overflow: clip;
 }
-.footer-note { font-size: 14px; color: var(--muted); }
+.footer-inner { padding: clamp(72px, 9vw, 128px) var(--gutter) 0; }
+
+.footer-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 48px clamp(40px, 8vw, 140px); }
+
+.footer-brand { display: flex; flex-direction: column; gap: 20px; max-width: 440px; }
+.footer-logo { display: inline-flex; align-items: center; gap: 12px; align-self: flex-start; font-size: 22px; font-weight: 600; }
+.footer-logo img { display: block; width: 36px; height: 36px; border-radius: 10px; }
+.footer-desc { margin: 0; font-size: 17px; line-height: 1.8; color: var(--soft); text-wrap: pretty; }
+
+.footer-social { display: flex; gap: 2px; margin: 0; padding: 0; list-style: none; }
+.footer-social a {
+  display: grid; place-items: center; width: 44px; height: 44px; border-radius: 999px;
+  color: var(--soft-2);
+  transition: color .25s, background .25s, transform .4s var(--ease), box-shadow .4s;
+}
+.footer-social a:hover { color: var(--bg); background: var(--accent); transform: translateY(-3px); box-shadow: 0 8px 28px rgba(238, 132, 99, .4); }
+.footer-social svg { width: 20px; height: 20px; fill: currentColor; }
+.footer-social svg.is-stroke { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+.footer-cols { display: flex; gap: clamp(36px, 6vw, 96px); }
+.footer-col ul { display: flex; flex-direction: column; gap: 2px; margin: 0; padding: 0; list-style: none; }
+.footer-col-title { margin: 0 0 18px; font-size: 16px; font-weight: 600; color: var(--fg); }
+.footer-col a {
+  display: inline-flex; align-items: center; min-height: 40px; font-size: 16px; color: var(--muted);
+  /* An accent underline that draws itself from the start of the line (right, in Arabic). */
+  background: linear-gradient(var(--accent), var(--accent)) no-repeat right calc(50% + 12px) / 0 1px;
+  transition: color .25s, background-size .45s var(--ease);
+}
+.footer-col a:hover { color: var(--fg); background-size: 100% 1px; }
+
+.footer-bar {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 24px;
+  margin-top: clamp(40px, 6vw, 72px); padding-top: 14px;
+  border-top: 1px solid rgba(248, 246, 242, .14);
+  font-size: 14px; color: var(--muted);
+}
+.footer-bar-end { display: flex; flex-wrap: wrap; align-items: center; gap: 0 20px; }
+.motion-btn { min-height: 44px; }
+
+/* ---------- Footer scene ---------- */
+
+/* The whole picture is particles on one canvas (see src/scene/FooterScene.ts). */
+.footer-art {
+  position: relative;
+  height: clamp(300px, 38vw, 560px);
+  overflow: clip;
+  background: linear-gradient(to bottom, rgba(5, 5, 6, 0) 0%, rgba(44, 22, 15, .26) 80%, rgba(70, 32, 20, .4) 100%);
+}
+/* The top edge fades out so stars and sparks melt into the links above. */
+.art-canvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; mask-image: linear-gradient(to bottom, transparent 0, #000 26%); }
+
+@media (max-width: 719px) {
+  .footer-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); width: 100%; gap: 32px 24px; }
+}
