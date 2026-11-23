@@ -66,6 +66,11 @@ export const teamProducts: Product[] = [
     href: 'https://booking.wjihub.com/',
   },
   {
+    status: 'منتج داخلي',
+    title: 'منصة «تم»',
+    description: 'منصة لإدارة مهام الفريق ومشاريعه، ومتابعة الحضور والأهداف وتقييم الأداء في مكان واحد.',
+  },
+  {
     status: 'نسخة تجريبية داخلية',
     title: 'وكيل واتساب «وجيه»',
     description: 'دعم فني للمستفيدين مدعوم بالذكاء الاصطناعي',
